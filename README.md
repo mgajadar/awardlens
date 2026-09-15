@@ -1,24 +1,24 @@
-# AwardLens
+# FedAwardScope
 
-[![CI](https://github.com/mgajadar/awardlens/actions/workflows/ci.yml/badge.svg)](https://github.com/mgajadar/awardlens/actions/workflows/ci.yml)
+[![CI](https://github.com/mgajadar/fedawardscope/actions/workflows/ci.yml/badge.svg)](https://github.com/mgajadar/fedawardscope/actions/workflows/ci.yml)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**AwardLens is an end-to-end federal procurement analytics platform for exploring award
+**FedAwardScope is an end-to-end federal procurement analytics platform for exploring award
 trends, vendor concentration, unusual contract values, and short-term spending patterns.**
 
 It turns public USAspending data into a reproducible local analytical product: resilient API
 ingestion, a canonical data model, DuckDB storage, transparent statistical methods, an
 interactive dashboard, automated tests, Docker packaging, and continuous integration.
 
-> AwardLens is an independent portfolio project. It is not affiliated with or endorsed by the
+> FedAwardScope is an independent portfolio project. It is not affiliated with or endorsed by the
 > U.S. government. An anomaly flag means "review this record," not fraud, waste, or wrongdoing.
 
 ## Why this project exists
 
 Federal procurement data is public but analytically awkward: users must understand award-type
 filters, paginate a remote API, normalize inconsistent fields, preserve lineage, and avoid
-overstating what descriptive patterns prove. AwardLens packages that work into a small system
+overstating what descriptive patterns prove. FedAwardScope packages that work into a small system
 that an analyst can run, inspect, test, and extend.
 
 ## Product capabilities
@@ -56,10 +56,10 @@ testable and allows another warehouse or front end to replace DuckDB or Streamli
 ### Using `uv`
 
 ```bash
-git clone https://github.com/mgajadar/awardlens.git
-cd awardlens
+git clone https://github.com/mgajadar/fedawardscope.git
+cd fedawardscope
 uv sync --extra dev
-uv run awardlens demo
+uv run fedawardscope demo
 uv run streamlit run app.py
 ```
 
@@ -72,7 +72,7 @@ synthetic demo so a reviewer never sees a broken first run.
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 python -m pip install -e ".[dev]"
-awardlens demo
+fedawardscope demo
 streamlit run app.py
 ```
 
@@ -87,7 +87,7 @@ docker compose up --build
 USAspending does not require an API key for this endpoint:
 
 ```bash
-awardlens ingest \
+fedawardscope ingest \
   --start 2025-01-01 \
   --end 2025-12-31 \
   --agency "Department of Defense" \
@@ -100,8 +100,8 @@ request volume, response stability, and whether an asynchronous bulk download is
 Other CLI workflows:
 
 ```bash
-awardlens summary
-awardlens export data/awardlens_export.csv
+fedawardscope summary
+fedawardscope export data/fedawardscope_export.csv
 ```
 
 Configuration can be supplied through environment variables documented in `.env.example`.
@@ -110,7 +110,7 @@ Configuration can be supplied through environment variables documented in `.env.
 
 ### Vendor concentration
 
-AwardLens reports each vendor's share of total awarded value and HHI:
+FedAwardScope reports each vendor's share of total awarded value and HHI:
 
 $$HHI = 10{,}000 \sum_i s_i^2$$
 
@@ -136,9 +136,9 @@ forecast or causal model. The dashboard displays an approximate 80% residual int
 ## Repository structure
 
 ```text
-awardlens/
+fedawardscope/
 ├── app.py                         # Streamlit Cloud entry point
-├── src/awardlens/
+├── src/fedawardscope/
 │   ├── analytics.py               # Metrics, HHI, anomalies, forecast
 │   ├── cli.py                     # Reproducible command-line workflows
 │   ├── config.py                  # Environment-based settings
@@ -159,7 +159,7 @@ awardlens/
 
 ```bash
 ruff check .
-pytest --cov=awardlens --cov-report=term-missing
+pytest --cov=fedawardscope --cov-report=term-missing
 ```
 
 CI executes the same checks on every pull request and push to `main`.

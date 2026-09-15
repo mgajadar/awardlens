@@ -2,7 +2,7 @@
 
 ## System boundaries
 
-AwardLens separates acquisition, persistence, analysis, and presentation. The separation is more
+FedAwardScope separates acquisition, persistence, analysis, and presentation. The separation is more
 important than the specific libraries: it prevents Streamlit callbacks from becoming the data
 pipeline and keeps external API changes away from business calculations.
 
@@ -20,7 +20,7 @@ pipeline and keeps external API changes away from business calculations.
 
 DuckDB is embedded, analytical, SQL-native, and works directly with pandas. A reviewer can clone
 the repository and run the product without provisioning infrastructure. PostgreSQL would be a
-better choice for concurrent writes, authentication, and a multi-user service; AwardLens keeps
+better choice for concurrent writes, authentication, and a multi-user service; FedAwardScope keeps
 database access behind `AwardRepository` so that migration is localized.
 
 ## Why Streamlit?
@@ -70,4 +70,3 @@ and documented selection criteria before operational use.
 4. Schedule incremental ingestion with an orchestrator.
 5. Publish analytics through a FastAPI service.
 6. Add authentication, authorization, observability, and deployment promotion controls.
-

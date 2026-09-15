@@ -1,4 +1,4 @@
-"""Canonical AwardLens data contract."""
+"""Canonical FedAwardScope data contract."""
 
 from __future__ import annotations
 
@@ -39,4 +39,3 @@ TEXT_COLUMNS = [
     "place_of_performance_state",
     "source",
 ]
-

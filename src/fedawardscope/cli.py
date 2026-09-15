@@ -1,4 +1,4 @@
-"""Command-line interface for repeatable AwardLens workflows."""
+"""Command-line interface for repeatable FedAwardScope workflows."""
 
 from __future__ import annotations
 
@@ -8,11 +8,11 @@ from typing import Annotated
 
 import typer
 
-from awardlens.analytics import summary_metrics
-from awardlens.config import Settings
-from awardlens.database import AwardRepository
-from awardlens.pipeline import ingest_usaspending, load_demo
-from awardlens.usaspending import AwardQuery, USAspendingClient
+from fedawardscope.analytics import summary_metrics
+from fedawardscope.config import Settings
+from fedawardscope.database import AwardRepository
+from fedawardscope.pipeline import ingest_usaspending, load_demo
+from fedawardscope.usaspending import AwardQuery, USAspendingClient
 
 app = typer.Typer(
     no_args_is_help=True,

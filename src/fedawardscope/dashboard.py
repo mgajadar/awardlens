@@ -1,4 +1,4 @@
-"""Interactive Streamlit dashboard for the AwardLens analytical product."""
+"""Interactive Streamlit dashboard for the FedAwardScope analytical product."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from awardlens.analytics import (
+from fedawardscope.analytics import (
     agency_spend,
     detect_award_anomalies,
     forecast_monthly_spend,
@@ -17,11 +17,11 @@ from awardlens.analytics import (
     summary_metrics,
     vendor_concentration,
 )
-from awardlens.config import Settings
-from awardlens.database import AwardRepository
-from awardlens.pipeline import load_demo
+from fedawardscope.config import Settings
+from fedawardscope.database import AwardRepository
+from fedawardscope.pipeline import load_demo
 
-st.set_page_config(page_title="AwardLens", page_icon="🔎", layout="wide")
+st.set_page_config(page_title="FedAwardScope", page_icon="🔎", layout="wide")
 
 
 @st.cache_resource
@@ -76,7 +76,7 @@ def apply_filters(awards: pd.DataFrame) -> pd.DataFrame:
 
 def render() -> None:
     settings = Settings.from_env()
-    database_path = os.getenv("AWARDLENS_DATABASE_PATH", str(settings.database_path))
+    database_path = os.getenv("FEDAWARDSCOPE_DATABASE_PATH", str(settings.database_path))
     repository = get_repository(database_path)
     if repository.count_awards() == 0:
         load_demo(repository)
@@ -85,7 +85,7 @@ def render() -> None:
     awards = load_awards(database_path)
     filtered = apply_filters(awards)
 
-    st.title("AwardLens")
+    st.title("FedAwardScope")
     st.caption(
         "Federal procurement intelligence: spending trends, vendor concentration, "
         "transparent anomaly screening, and baseline forecasting."
@@ -211,7 +211,7 @@ def render() -> None:
         st.download_button(
             "Download filtered CSV",
             filtered.to_csv(index=False).encode("utf-8"),
-            file_name="awardlens_filtered_awards.csv",
+            file_name="fedawardscope_filtered_awards.csv",
             mime="text/csv",
         )
 

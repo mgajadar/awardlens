@@ -11,7 +11,7 @@ from typing import Any
 import httpx
 import pandas as pd
 
-from awardlens.schema import AWARD_COLUMNS
+from fedawardscope.schema import AWARD_COLUMNS
 
 CONTRACT_AWARD_TYPE_CODES = ("A", "B", "C", "D")
 AWARD_FIELDS = (
@@ -105,7 +105,7 @@ class USAspendingClient:
     def iter_pages(self, query: AwardQuery) -> Iterator[tuple[int, list[dict[str, Any]]]]:
         """Yield API result pages until the API or configured page limit is exhausted."""
 
-        headers = {"User-Agent": "AwardLens/0.1 (public-data analytics project)"}
+        headers = {"User-Agent": "FedAwardScope/0.1 (public-data analytics project)"}
         with httpx.Client(
             base_url=self.base_url,
             timeout=self.timeout_seconds,
@@ -184,7 +184,7 @@ def _clean_text(value: Any) -> str | None:
 
 
 def normalize_award_rows(rows: list[dict[str, Any]], *, page: int) -> pd.DataFrame:
-    """Convert the external API schema into AwardLens's stable internal contract."""
+    """Convert the external API schema into FedAwardScope's stable internal contract."""
 
     ingested_at = datetime.now(UTC).replace(microsecond=0)
     normalized: list[dict[str, Any]] = []

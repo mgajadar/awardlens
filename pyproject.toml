@@ -3,7 +3,7 @@ requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
-name = "awardlens"
+name = "fedawardscope"
 version = "0.1.0"
 description = "Federal procurement analytics for spend trends, vendor concentration, anomaly detection, and forecasting."
 readme = "README.md"
@@ -29,10 +29,10 @@ dev = [
 ]
 
 [project.scripts]
-awardlens = "awardlens.cli:app"
+fedawardscope = "fedawardscope.cli:app"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/awardlens"]
+packages = ["src/fedawardscope"]
 
 [tool.pytest.ini_options]
 addopts = "-q --strict-markers --disable-warnings"
@@ -46,8 +46,8 @@ line-length = 100
 select = ["E", "F", "I", "UP", "B", "SIM"]
 
 [tool.coverage.run]
-source = ["awardlens"]
+source = ["fedawardscope"]
 omit = [
-  "*/awardlens/cli.py",
-  "*/awardlens/dashboard.py",
+  "*/fedawardscope/cli.py",
+  "*/fedawardscope/dashboard.py",
 ]

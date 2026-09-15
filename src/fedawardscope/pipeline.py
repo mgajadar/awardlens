@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from awardlens.database import AwardRepository
-from awardlens.demo_data import generate_demo_awards
-from awardlens.usaspending import AwardQuery, USAspendingClient
+from fedawardscope.database import AwardRepository
+from fedawardscope.demo_data import generate_demo_awards
+from fedawardscope.usaspending import AwardQuery, USAspendingClient
 
 
 @dataclass(frozen=True, slots=True)
@@ -30,4 +30,3 @@ def ingest_usaspending(
     awards = client.fetch_awards(query)
     received = repository.save_awards(awards)
     return PipelineResult(received, repository.count_awards(), "usaspending_api")
-

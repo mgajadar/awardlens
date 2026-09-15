@@ -1,5 +1,5 @@
-from awardlens.demo_data import generate_demo_awards
-from awardlens.schema import AWARD_COLUMNS
+from fedawardscope.demo_data import generate_demo_awards
+from fedawardscope.schema import AWARD_COLUMNS
 
 
 def test_demo_data_is_deterministic_and_canonical() -> None:
@@ -11,4 +11,3 @@ def test_demo_data_is_deterministic_and_canonical() -> None:
     assert first["award_id"].is_unique
     assert first["award_amount"].tolist() == second["award_amount"].tolist()
     assert set(first["source"]) == {"synthetic_demo"}
-

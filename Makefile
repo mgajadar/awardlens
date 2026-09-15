@@ -4,13 +4,13 @@ install:
 	python -m pip install -e ".[dev]"
 
 demo:
-	awardlens demo
+	fedawardscope demo
 
 dashboard:
 	streamlit run app.py
 
 test:
-	pytest --cov=awardlens --cov-report=term-missing
+	pytest --cov=fedawardscope --cov-report=term-missing
 
 lint:
 	ruff check .
@@ -19,4 +19,3 @@ check: lint test
 
 docker:
 	docker compose up --build
-

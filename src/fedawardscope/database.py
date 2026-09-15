@@ -7,7 +7,7 @@ from pathlib import Path
 import duckdb
 import pandas as pd
 
-from awardlens.schema import AWARD_COLUMNS
+from fedawardscope.schema import AWARD_COLUMNS
 
 SCHEMA_SQL = """
 CREATE TABLE IF NOT EXISTS awards (
