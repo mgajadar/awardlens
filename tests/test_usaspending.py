@@ -2,7 +2,7 @@ from datetime import date
 
 import httpx
 
-from awardlens.usaspending import AwardQuery, USAspendingClient, normalize_award_rows
+from fedawardscope.usaspending import AwardQuery, USAspendingClient, normalize_award_rows
 
 
 def test_query_payload_contains_required_contract_filters() -> None:
@@ -57,4 +57,3 @@ def test_client_paginates_mocked_api() -> None:
     frame = client.fetch_awards(query)
 
     assert frame["award_id"].tolist() == ["AWARD-1", "AWARD-2"]
-

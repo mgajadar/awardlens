@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from awardlens.database import AwardRepository
-from awardlens.demo_data import generate_demo_awards
+from fedawardscope.database import AwardRepository
+from fedawardscope.demo_data import generate_demo_awards
 
 
 def test_repository_round_trip_and_upsert(tmp_path: Path) -> None:

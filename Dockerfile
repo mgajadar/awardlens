@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    AWARDLENS_DATABASE_PATH=/app/data/awardlens.duckdb
+    FEDAWARDSCOPE_DATABASE_PATH=/app/data/fedawardscope.duckdb
 
 WORKDIR /app
 
@@ -19,4 +19,3 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health')"
 
 CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0", "--server.port=8501"]
-

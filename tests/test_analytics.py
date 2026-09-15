@@ -1,14 +1,14 @@
 import pandas as pd
 import pytest
 
-from awardlens.analytics import (
+from fedawardscope.analytics import (
     detect_award_anomalies,
     forecast_monthly_spend,
     monthly_spend,
     summary_metrics,
     vendor_concentration,
 )
-from awardlens.demo_data import generate_demo_awards
+from fedawardscope.demo_data import generate_demo_awards
 
 
 @pytest.fixture
@@ -63,4 +63,3 @@ def test_forecast_has_requested_horizon_and_intervals(awards: pd.DataFrame) -> N
 def test_forecast_rejects_nonpositive_horizon(awards: pd.DataFrame) -> None:
     with pytest.raises(ValueError, match="horizon"):
         forecast_monthly_spend(awards, horizon=0)
-

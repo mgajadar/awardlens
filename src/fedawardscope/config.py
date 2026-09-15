@@ -11,7 +11,7 @@ from pathlib import Path
 class Settings:
     """Runtime configuration for local and deployed environments."""
 
-    database_path: Path = Path("data/awardlens.duckdb")
+    database_path: Path = Path("data/fedawardscope.duckdb")
     api_base_url: str = "https://api.usaspending.gov"
     request_timeout_seconds: float = 30.0
     max_retries: int = 4
@@ -20,14 +20,13 @@ class Settings:
     def from_env(cls) -> Settings:
         return cls(
             database_path=Path(
-                os.getenv("AWARDLENS_DATABASE_PATH", "data/awardlens.duckdb")
+                os.getenv("FEDAWARDSCOPE_DATABASE_PATH", "data/fedawardscope.duckdb")
             ),
             api_base_url=os.getenv(
-                "AWARDLENS_API_BASE_URL", "https://api.usaspending.gov"
+                "FEDAWARDSCOPE_API_BASE_URL", "https://api.usaspending.gov"
             ).rstrip("/"),
             request_timeout_seconds=float(
-                os.getenv("AWARDLENS_REQUEST_TIMEOUT_SECONDS", "30")
+                os.getenv("FEDAWARDSCOPE_REQUEST_TIMEOUT_SECONDS", "30")
             ),
-            max_retries=int(os.getenv("AWARDLENS_MAX_RETRIES", "4")),
+            max_retries=int(os.getenv("FEDAWARDSCOPE_MAX_RETRIES", "4")),
         )
-

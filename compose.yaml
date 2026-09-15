@@ -1,13 +1,12 @@
 services:
-  awardlens:
+  fedawardscope:
     build: .
     ports:
       - "8501:8501"
     environment:
-      AWARDLENS_DATABASE_PATH: /app/data/awardlens.duckdb
+      FEDAWARDSCOPE_DATABASE_PATH: /app/data/fedawardscope.duckdb
     volumes:
-      - awardlens-data:/app/data
+      - fedawardscope-data:/app/data
 
 volumes:
-  awardlens-data:
-
+  fedawardscope-data:

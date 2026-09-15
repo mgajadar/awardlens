@@ -2,7 +2,7 @@
 
 ## Thirty-second pitch
 
-> AwardLens is an end-to-end Python and SQL analytics product built around public federal contract
+> FedAwardScope is an end-to-end Python and SQL analytics product built around public federal contract
 > data. It ingests and normalizes USAspending awards, stores them in DuckDB, and exposes spending
 > trends, vendor concentration, robust anomaly screening, and an interpretable forecast through a
 > Streamlit dashboard. I focused on reproducibility and responsible interpretation, so it also has
@@ -145,4 +145,3 @@ another major risk, so I would add contract tests and raw-response retention.
 - "DuckDB is always better than PostgreSQL."
 - "The data is accurate because it comes from the government."
 - "AI built it, so I do not know that part."
-

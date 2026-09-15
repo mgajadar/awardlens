@@ -1,4 +1,3 @@
 """Streamlit Cloud entry point."""
 
-from awardlens.dashboard import render  # noqa: F401
-
+from fedawardscope.dashboard import render  # noqa: F401

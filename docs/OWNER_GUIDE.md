@@ -1,10 +1,10 @@
-# AwardLens Owner's Guide
+# FedAwardScope Owner's Guide
 
 This guide is the shortest path from "I can run it" to "I can own and modify it."
 
 ## Product story
 
-AwardLens answers four screening questions:
+FedAwardScope answers four screening questions:
 
 1. How is awarded value changing over time?
 2. Which agencies and vendors account for the largest shares?
@@ -19,8 +19,8 @@ context required for those conclusions.
 
 ```bash
 uv sync --extra dev
-uv run awardlens demo
-uv run awardlens summary
+uv run fedawardscope demo
+uv run fedawardscope summary
 uv run streamlit run app.py
 ```
 
@@ -41,7 +41,7 @@ Follow one record through the system:
 - `build_payload` translates typed criteria into the public API contract.
 - `iter_pages` owns remote pagination.
 - `_post_with_retry` handles temporary service failures without retrying forever.
-- `normalize_award_rows` is the anti-corruption layer between the API and AwardLens.
+- `normalize_award_rows` is the anti-corruption layer between the API and FedAwardScope.
 
 ### `database.py`
 
@@ -94,9 +94,8 @@ codebase. The last two are strong v2 enhancements.
 
 A strong, accurate explanation is:
 
-> I designed and developed AwardLens as a portfolio data product with AI-assisted implementation.
+> I designed and developed FedAwardScope as a portfolio data product with AI-assisted implementation.
 > I can explain the architecture, tests, analytical methods, limitations, and tradeoffs, and I
 > validated the complete workflow myself.
 
 Using assistance is not the weakness. Being unable to explain or change the system would be.
-
