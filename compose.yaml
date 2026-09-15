@@ -1,0 +1,13 @@
+services:
+  awardlens:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      AWARDLENS_DATABASE_PATH: /app/data/awardlens.duckdb
+    volumes:
+      - awardlens-data:/app/data
+
+volumes:
+  awardlens-data:
+

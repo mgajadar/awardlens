@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "awardlens"
+version = "0.1.0"
+description = "Federal procurement analytics for spend trends, vendor concentration, anomaly detection, and forecasting."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Marcus Gajadar" }]
+keywords = ["analytics", "federal-spending", "procurement", "python", "sql"]
+dependencies = [
+  "duckdb>=1.2,<2",
+  "httpx[socks]>=0.28,<1",
+  "numpy>=2.0,<3",
+  "pandas>=2.2,<3",
+  "plotly>=6,<7",
+  "streamlit>=1.44,<2",
+  "typer>=0.15,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<9",
+  "pytest-cov>=6,<7",
+  "ruff>=0.11,<1",
+]
+
+[project.scripts]
+awardlens = "awardlens.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/awardlens"]
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers --disable-warnings"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.coverage.run]
+source = ["awardlens"]
+omit = [
+  "*/awardlens/cli.py",
+  "*/awardlens/dashboard.py",
+]
