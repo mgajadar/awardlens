@@ -192,4 +192,3 @@ CI executes the same checks on every pull request and push to `main`.
 ## Author
 
 **Marcus Gajadar** — data analytics and applied AI engineering
-
